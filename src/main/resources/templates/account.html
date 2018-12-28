@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Your events</title>
+    </head>
+
+    <body>
+        <p><a href="/logout" >Logout</a></p>
+        <p th:text="'Name:' + ${account.name} + ' | Address:' + ${account.address}">accoungInfo</p>
+        <h1>Events you have signed up to:</h1>
+        <ul th:each=" event : ${events}">
+            <li> <a th:href="@{/event/} + ${event.id}" th:text="${event.name}"> value </a></li>
+        </ul>
+    </body>
+</html>

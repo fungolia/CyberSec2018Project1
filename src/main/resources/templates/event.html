@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Event</title>
+    </head>
+
+    <body>
+        <a href="/logout" >Logout</a> <a href="/event/" >Events</a>
+        <h1 th:text="${event.name}">name</h1>
+        <p th:utext="${event.comments}">comments</p>
+        <form action="#" th:action="@{/event/} + ${id}" method="POST">
+            <p><label for="comment">New Comment</label>: <textarea name="comment" id="comment"/></p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+
+    </body>
+</html>
