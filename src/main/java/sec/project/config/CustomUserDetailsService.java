@@ -22,7 +22,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @PostConstruct
     public void init() {
         Signup tester = new Signup("testman", "NoStreet", "123");
+        Signup yup = new Signup("yup", "YesStreet", "password");
         signupRepository.save(tester);
+        signupRepository.save(yup);
     }
 
     @Override

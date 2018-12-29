@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import sec.project.domain.Signup;
 import sec.project.repository.SignupRepository;
 import sec.project.repository.EventRepository;
@@ -25,9 +24,9 @@ public class AccountController {
     @Autowired
     HttpSession session;
 
-    @GetMapping("*")
-    public String accountById(HttpServletRequest request, Model model, Principal principal) {
-        Signup singup = signupRepository.findByName(principal.getName());
+    @GetMapping("/{account}")
+    public String accountById(HttpServletRequest request, Model model, @PathVariable("account") String name) {
+        Signup singup = signupRepository.findByName(name);
         model.addAttribute("events", singup.getEvents());
         model.addAttribute("account", singup);
         return "account";

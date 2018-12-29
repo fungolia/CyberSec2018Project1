@@ -59,6 +59,7 @@ public class EventController {
         Signup singup = signupRepository.findByName(principal.getName());
         if (password.equals(singup.getPassword())) {
             singup.getEvents().add(eventRepository.findOne(id));
+            model.addAttribute("username", principal.getName());
             signupRepository.save(singup);
             return "done";
         } else {
